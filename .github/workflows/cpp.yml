@@ -1,0 +1,17 @@
+name: C++ build and tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build application
+        run: g++ -std=c++20 -Wall -Wextra -Wpedantic main.cpp -o ums
+      - name: Build tests
+        run: g++ -std=c++20 -Wall -Wextra -Wpedantic tests.cpp -o ums_tests
+      - name: Run tests
+        run: ./ums_tests

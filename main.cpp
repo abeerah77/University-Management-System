@@ -134,11 +134,12 @@ public:
         if(!validFaculty(f,e)) return false;
         if(f.id!=id && faculty.count(f.id)){e="Replacement faculty ID already exists.";return false;}
         f.courseId=it->second.courseId;
-        string old=id;
-        faculty.erase(it); faculty[f.id]=move(f);
-        if(old!=faculty.begin()->first) {
-            for(auto& [k,c]:courses) if(c.facultyId&&*c.facultyId==old) c.facultyId=faculty.find(id)==faculty.end()?optional<string>(f.id):faculty.find(id)->first;
-        }
+        const string old=id;
+        const string newId=f.id;
+        faculty.erase(it);
+        faculty[newId]=move(f);
+        for(auto& [k,c]:courses)
+            if(c.facultyId&&*c.facultyId==old) c.facultyId=newId;
         return save();
     }
 
@@ -163,7 +164,7 @@ public:
 
     // US-09 / UMS-17
     bool enterMarks(const string& eid,const string& sid,const string& fid,int value,string& e) {
-        auto ex=exams.find(eid), st=students.find(sid), fa=faculty.find(fid);
+        auto ex=exams.find(eid);\n        auto st=students.find(sid);\n        auto fa=faculty.find(fid);
         if(ex==exams.end()){e="Examination not found.";return false;}
         if(st==students.end()){e="Student not found.";return false;}
         if(fa==faculty.end()){e="Faculty not found.";return false;}

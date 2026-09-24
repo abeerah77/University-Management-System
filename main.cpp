@@ -164,7 +164,9 @@ public:
 
     // US-09 / UMS-17
     bool enterMarks(const string& eid,const string& sid,const string& fid,int value,string& e) {
-        auto ex=exams.find(eid);\n        auto st=students.find(sid);\n        auto fa=faculty.find(fid);
+        auto ex=exams.find(eid);
+        auto st=students.find(sid);
+        auto fa=faculty.find(fid);
         if(ex==exams.end()){e="Examination not found.";return false;}
         if(st==students.end()){e="Student not found.";return false;}
         if(fa==faculty.end()){e="Faculty not found.";return false;}

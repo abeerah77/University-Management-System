@@ -1,8 +1,16 @@
 # University Management System — C++11 / MSYS2 UCRT64
 
-Complete implementation of the 15 University Management System user stories.
+Implementation for **Wardah's assigned Jira stories**.
 
-## Implemented user stories
+## Assigned stories
+
+- UMS-24 / US-01 — Add Faculty
+- UMS-11 / US-03 — Update Faculty
+- UMS-13 / US-05 — Assign Faculty to Course
+- UMS-14 / US-06 — Create Examination
+- UMS-17 / US-09 — Enter Student Marks
+- UMS-19 / US-11 — View Available Courses
+- UMS-22 / US-14 — Check Course Capacity
 
 ### Faculty Management
 - US-01 Add Faculty

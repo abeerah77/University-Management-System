@@ -63,6 +63,9 @@ class UniversityManagementSystem {
         string part;
         stringstream stream(value);
         while (getline(stream, part, delimiter)) parts.push_back(part);
+        // Preserve trailing empty fields so persisted records such as
+        // "course|capacity|" remain valid when loaded again.
+        if (!value.empty() && value.back() == delimiter) parts.emplace_back();
         return parts;
     }
 

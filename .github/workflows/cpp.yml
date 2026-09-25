@@ -5,13 +5,48 @@ on:
   pull_request:
 
 jobs:
-  build:
+  linux-gcc:
+    name: Linux GCC C++11
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Show compiler version
+        run: g++ --version
+
       - name: Build application
-        run: g++ -std=c++20 -Wall -Wextra -Wpedantic main.cpp -o ums
+        run: g++ -std=c++11 -Wall -Wextra -Wpedantic main.cpp -o ums
+
       - name: Build tests
-        run: g++ -std=c++20 -Wall -Wextra -Wpedantic tests.cpp -o ums_tests
+        run: g++ -std=c++11 -Wall -Wextra -Wpedantic tests.cpp -o ums_tests
+
       - name: Run tests
         run: ./ums_tests
+
+  windows-ucrt64:
+    name: Windows MSYS2 UCRT64
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up MSYS2 UCRT64
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: true
+          install: mingw-w64-ucrt-x86_64-gcc
+
+      - name: Show compiler version
+        run: g++ --version
+
+      - name: Build application
+        run: g++ -std=c++11 -Wall -Wextra -Wpedantic main.cpp -o ums.exe
+
+      - name: Build tests
+        run: g++ -std=c++11 -Wall -Wextra -Wpedantic tests.cpp -o ums_tests.exe
+
+      - name: Run tests
+        run: ./ums_tests.exe

@@ -10,9 +10,9 @@
                 "-Wall",
                 "-Wextra",
                 "-Wpedantic",
-                "\${workspaceFolder}\\main.cpp",
+                "${workspaceFolder}\\main.cpp",
                 "-o",
-                "\${workspaceFolder}\\main.exe"
+                "${workspaceFolder}\\main.exe"
             ],
             "problemMatcher": [
                 "$gcc"
@@ -31,16 +31,16 @@
                 "-Wall",
                 "-Wextra",
                 "-Wpedantic",
-                "\${workspaceFolder}\\tests.cpp",
+                "${workspaceFolder}\\tests.cpp",
                 "-o",
-                "\${workspaceFolder}\\ums_tests.exe"
+                "${workspaceFolder}\\ums_tests.exe"
             ],
             "problemMatcher": []
         },
         {
             "label": "Run UMS Tests",
             "type": "shell",
-            "command": "\${workspaceFolder}\\ums_tests.exe",
+            "command": "${workspaceFolder}\\ums_tests.exe",
             "dependsOn": "Build UMS Tests",
             "problemMatcher": []
         }

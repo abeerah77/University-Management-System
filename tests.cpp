@@ -73,6 +73,7 @@ int main() {
     assert(!system.enterMarks("EX001", "S001", "F002", 101, error));
 
     // US-10 — View Examination Results / student access control
+    error.clear();
     auto results = system.getResultsForStudent("S001", "S001", error);
     assert(error.empty());
     assert(results.size() == 1);

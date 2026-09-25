@@ -1,0 +1,48 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build UMS",
+            "type": "shell",
+            "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
+            "args": [
+                "-std=c++11",
+                "-Wall",
+                "-Wextra",
+                "-Wpedantic",
+                "\${workspaceFolder}\\main.cpp",
+                "-o",
+                "\${workspaceFolder}\\main.exe"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Build UMS Tests",
+            "type": "shell",
+            "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
+            "args": [
+                "-std=c++11",
+                "-Wall",
+                "-Wextra",
+                "-Wpedantic",
+                "\${workspaceFolder}\\tests.cpp",
+                "-o",
+                "\${workspaceFolder}\\ums_tests.exe"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Run UMS Tests",
+            "type": "shell",
+            "command": "\${workspaceFolder}\\ums_tests.exe",
+            "dependsOn": "Build UMS Tests",
+            "problemMatcher": []
+        }
+    ]
+}
